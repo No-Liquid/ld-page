@@ -97,6 +97,39 @@ export default function DCABot() {
             </div>
           </div>
 
+          {/* Live Performance Snapshot */}
+          <div className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white p-8 rounded-lg">
+            <h3 className="text-3xl font-semibold mb-6">📊 Live Performance Snapshot</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
+              <div className="text-center">
+                <div className="text-sm opacity-80 mb-1">Last Month</div>
+                <div className="text-2xl font-bold">-$2,816.23</div>
+                <div className="text-xs opacity-70">Nov 2025</div>
+              </div>
+              <div className="text-center">
+                <div className="text-sm opacity-80 mb-1">Best Month</div>
+                <div className="text-2xl font-bold text-green-300">+$1,082.75</div>
+                <div className="text-xs opacity-70">Oct 2025</div>
+              </div>
+              <div className="text-center">
+                <div className="text-sm opacity-80 mb-1">Win Rate</div>
+                <div className="text-2xl font-bold">66.7%</div>
+                <div className="text-xs opacity-70">8 of 12 months</div>
+              </div>
+              <div className="text-center">
+                <div className="text-sm opacity-80 mb-1">Total P&L</div>
+                <div className="text-2xl font-bold text-red-300">-$534.13</div>
+                <div className="text-xs opacity-70">YTD 2025</div>
+              </div>
+            </div>
+            <a
+              href="/analysis"
+              className="inline-block w-full px-6 py-3 bg-white text-blue-700 font-semibold rounded hover:bg-gray-100 transition-all text-center"
+            >
+              📈 View Full Analytics Dashboard →
+            </a>
+          </div>
+
           {/* Investment Opportunities */}
           <div className="text-center p-10 bg-white border-2 border-border-color">
             <h3 className="text-3xl font-semibold mb-8">Investment Opportunities</h3>
@@ -114,14 +147,22 @@ export default function DCABot() {
                 <span className="font-bold text-xl">$1,000 USD</span>
               </div>
             </div>
-            <a
-              href="https://t.me/jason_00_chang"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-12 py-5 bg-black text-white border-2 border-black text-base font-semibold hover:bg-white hover:text-black transition-all"
-            >
-              Contact Us for Details
-            </a>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://t.me/jason_00_chang"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-12 py-5 bg-black text-white border-2 border-black text-base font-semibold hover:bg-white hover:text-black transition-all"
+              >
+                Contact Us for Details
+              </a>
+              <a
+                href="/analysis"
+                className="inline-block px-12 py-5 bg-blue-600 text-white border-2 border-blue-600 text-base font-semibold hover:bg-white hover:text-blue-600 transition-all"
+              >
+                View Live Performance →
+              </a>
+            </div>
           </div>
         </div>
       </div>

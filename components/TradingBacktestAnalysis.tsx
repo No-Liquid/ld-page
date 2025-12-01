@@ -187,25 +187,89 @@ const TradingBacktestAnalysis = () => {
       )}
 
       {activeTab === 'stats' && (
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h2 className="text-xl font-semibold mb-6 text-gray-700">Backtest Metrics</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {stats.map((stat, index) => (
-              <div key={index} className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-                <div className="text-sm text-gray-600 mb-1">{stat.label}</div>
-                <div className={`text-2xl font-bold ${stat.color}`}>{stat.value}</div>
+        <div className="space-y-8">
+          <div className="bg-white p-8 rounded-2xl shadow-xl border-2 border-gray-100">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="text-3xl">📊</div>
+              <div>
+                <h2 className="text-2xl font-bold text-gray-800">Comprehensive Backtest Metrics</h2>
+                <p className="text-sm text-gray-600">All key performance indicators at a glance</p>
               </div>
-            ))}
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {stats.map((stat, index) => (
+                <div 
+                  key={index} 
+                  className="group relative p-6 bg-gradient-to-br from-gray-50 to-white rounded-xl border-2 border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300"
+                >
+                  <div className="absolute top-0 right-0 w-12 h-12 bg-gradient-to-br from-blue-100 to-transparent rounded-bl-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="relative">
+                    <div className="text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wider">
+                      {stat.label}
+                    </div>
+                    <div className={`text-3xl font-bold mb-1 ${stat.color}`}>
+                      {stat.value}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="mt-8 p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <h3 className="font-semibold text-blue-900 mb-2">Metrics Explanation:</h3>
-            <ul className="text-sm text-blue-800 space-y-1 list-disc list-inside">
-              <li><strong>Win Rate:</strong> Percentage of winning months vs total months</li>
-              <li><strong>Profit Factor:</strong> Total profits / Total losses (good if &gt; 1)</li>
-              <li><strong>Sharpe Ratio:</strong> Average return / Standard deviation (higher is better)</li>
-              <li><strong>Max Drawdown:</strong> Largest peak-to-trough decline</li>
-            </ul>
+          {/* Metrics Explanation */}
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-2xl border-2 border-blue-200 shadow-lg">
+              <h3 className="text-xl font-bold text-blue-900 mb-4 flex items-center gap-2">
+                <span>💡</span> Key Metrics Explained
+              </h3>
+              <ul className="space-y-3 text-sm text-blue-800">
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-600 font-bold">•</span>
+                  <div>
+                    <strong>Win Rate:</strong> Percentage of winning months vs total months. Higher is better.
+                  </div>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-600 font-bold">•</span>
+                  <div>
+                    <strong>Profit Factor:</strong> Total profits / Total losses. Above 1 means profitable, above 2 is excellent.
+                  </div>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-600 font-bold">•</span>
+                  <div>
+                    <strong>Sharpe Ratio:</strong> Risk-adjusted returns. Higher values indicate better risk/reward balance.
+                  </div>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-600 font-bold">•</span>
+                  <div>
+                    <strong>Max Drawdown:</strong> Largest peak-to-trough decline. Lower is better for risk management.
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-2xl border-2 border-purple-200 shadow-lg">
+              <h3 className="text-xl font-bold text-purple-900 mb-4 flex items-center gap-2">
+                <span>🎯</span> What These Numbers Mean
+              </h3>
+              <div className="space-y-4 text-sm text-purple-800">
+                <div className="bg-white/50 p-3 rounded-lg">
+                  <div className="font-semibold mb-1">Excellent Performance</div>
+                  <div className="text-xs">Win Rate &gt; 70%, Profit Factor &gt; 2.0, Max DD &lt; 15%</div>
+                </div>
+                <div className="bg-white/50 p-3 rounded-lg">
+                  <div className="font-semibold mb-1">Good Performance</div>
+                  <div className="text-xs">Win Rate 60-70%, Profit Factor 1.5-2.0, Max DD 15-25%</div>
+                </div>
+                <div className="bg-white/50 p-3 rounded-lg">
+                  <div className="font-semibold mb-1">Fair Performance</div>
+                  <div className="text-xs">Win Rate 50-60%, Profit Factor 1.0-1.5, Max DD &gt; 25%</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}

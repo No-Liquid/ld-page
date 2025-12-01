@@ -116,8 +116,20 @@ No environment variables are currently required for this project.
 
 ## Pages
 
-- `/` - Landing page with all sections
-- `/analysis` - Trading backtest analysis dashboard
+- `/` - Landing page with all sections including:
+  - Hero section with CTA
+  - Features showcase (6 cards)
+  - DCA Bot details with live performance snapshot
+  - How it works (3 steps)
+  - Statistics display
+  - Call-to-action section
+  - Footer
+- `/analysis` - Comprehensive trading analytics dashboard featuring:
+  - Performance overview with 8 key metrics cards
+  - Interactive charts (Equity Curve, Monthly P&L, Drawdown)
+  - Detailed statistics with explanations
+  - Quick insights panel
+  - Risk assessment summary
 
 ## Tech Stack
 
