@@ -1,6 +1,0 @@
-make analytics backtest and main dashboard more beatifull and more connections, make it in page{
-  "buildCommand": "npm run build",
-  "outputDirectory": ".next",
-  "devCommand": "npm run dev",
-  "installCommand": "npm install"
-}

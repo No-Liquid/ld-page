@@ -68,51 +68,59 @@ const TradingBacktestAnalysis = () => {
   ]
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-5 font-mono">
-      {/* Section Header */}
-      <div className="text-center mb-10">
-        <h2 className="text-4xl font-bold mb-3 text-gray-800">Detailed Backtest Analysis</h2>
-        <p className="text-gray-600 text-lg">
-          Comprehensive monthly performance breakdown and statistical insights
+    <div className="w-full max-w-7xl mx-auto px-4 font-mono">
+      {/* Compact Section Header */}
+      <div className="text-center mb-6">
+        <h2 className="text-3xl font-bold mb-2 text-gray-800 tracking-tight">Backtest Analysis</h2>
+        <p className="text-gray-600 text-sm">
+          Monthly performance · Statistical insights · Risk metrics
         </p>
       </div>
       
-      {/* Tabs */}
-      <div className="flex gap-2 mb-8 border-b-2 border-gray-200 bg-white rounded-t-xl p-2 shadow-sm">
+      {/* Compact Tabs */}
+      <div className="flex gap-1 mb-6 bg-gray-100 rounded-lg p-1 w-fit mx-auto">
         <button
           onClick={() => setActiveTab('chart')}
-          className={`px-6 py-3 font-semibold rounded-lg transition-all ${
+          className={`px-5 py-2 text-sm font-semibold rounded-md transition-all ${
             activeTab === 'chart' 
-              ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md' 
-              : 'text-gray-600 hover:bg-gray-100'
+              ? 'bg-white text-blue-600 shadow-sm' 
+              : 'text-gray-600 hover:text-gray-900'
           }`}
         >
-          📊 Charts & Graphs
+          📊 Charts
         </button>
         <button
           onClick={() => setActiveTab('stats')}
-          className={`px-6 py-3 font-semibold rounded-lg transition-all ${
+          className={`px-5 py-2 text-sm font-semibold rounded-md transition-all ${
             activeTab === 'stats' 
-              ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md' 
-              : 'text-gray-600 hover:bg-gray-100'
+              ? 'bg-white text-blue-600 shadow-sm' 
+              : 'text-gray-600 hover:text-gray-900'
           }`}
         >
-          📈 Statistics & Metrics
+          📈 Statistics
         </button>
       </div>
 
       {activeTab === 'chart' && (
-        <div className="space-y-8">
-          {/* Equity Curve */}
-          <div className="bg-white p-8 rounded-2xl shadow-xl border-2 border-gray-100 hover:border-blue-200 transition-all">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="text-3xl">📈</div>
-              <div>
-                <h2 className="text-2xl font-bold text-gray-800">Equity Curve</h2>
-                <p className="text-sm text-gray-600">Cumulative account growth over time</p>
+        <div className="space-y-5">
+          {/* Compact Equity Curve */}
+          <div className="bg-white p-5 rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition-all">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-2">
+                <div className="text-xl">📈</div>
+                <div>
+                  <h3 className="text-lg font-bold text-gray-800">Equity Curve</h3>
+                  <p className="text-xs text-gray-500">Cumulative growth</p>
+                </div>
+              </div>
+              <div className="text-right">
+                <div className={`text-sm font-bold ${totalPnL >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                  {totalPnL >= 0 ? '+' : ''}{totalPnL.toFixed(2)} USD
+                </div>
+                <div className="text-xs text-gray-500">Total P&L</div>
               </div>
             </div>
-            <ResponsiveContainer width="100%" height={350}>
+            <ResponsiveContainer width="100%" height={280}>
               <LineChart data={equityCurve}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="month" style={{ fontFamily: 'JetBrains Mono, monospace' }} />
