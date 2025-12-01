@@ -68,31 +68,51 @@ const TradingBacktestAnalysis = () => {
   ]
 
   return (
-    <div className="w-full max-w-6xl mx-auto p-6 bg-gray-50 font-mono">
-      <h1 className="text-3xl font-bold mb-6 text-gray-800">Trading Backtest Analysis</h1>
+    <div className="w-full max-w-7xl mx-auto px-5 font-mono">
+      {/* Section Header */}
+      <div className="text-center mb-10">
+        <h2 className="text-4xl font-bold mb-3 text-gray-800">Detailed Backtest Analysis</h2>
+        <p className="text-gray-600 text-lg">
+          Comprehensive monthly performance breakdown and statistical insights
+        </p>
+      </div>
       
       {/* Tabs */}
-      <div className="flex gap-2 mb-6 border-b border-gray-300">
+      <div className="flex gap-2 mb-8 border-b-2 border-gray-200 bg-white rounded-t-xl p-2 shadow-sm">
         <button
           onClick={() => setActiveTab('chart')}
-          className={`px-4 py-2 font-medium ${activeTab === 'chart' ? 'border-b-2 border-blue-600 text-blue-600' : 'text-gray-600'}`}
+          className={`px-6 py-3 font-semibold rounded-lg transition-all ${
+            activeTab === 'chart' 
+              ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md' 
+              : 'text-gray-600 hover:bg-gray-100'
+          }`}
         >
-          Charts
+          📊 Charts & Graphs
         </button>
         <button
           onClick={() => setActiveTab('stats')}
-          className={`px-4 py-2 font-medium ${activeTab === 'stats' ? 'border-b-2 border-blue-600 text-blue-600' : 'text-gray-600'}`}
+          className={`px-6 py-3 font-semibold rounded-lg transition-all ${
+            activeTab === 'stats' 
+              ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md' 
+              : 'text-gray-600 hover:bg-gray-100'
+          }`}
         >
-          Statistics
+          📈 Statistics & Metrics
         </button>
       </div>
 
       {activeTab === 'chart' && (
-        <div className="space-y-6">
+        <div className="space-y-8">
           {/* Equity Curve */}
-          <div className="bg-white p-6 rounded-lg shadow">
-            <h2 className="text-xl font-semibold mb-4 text-gray-700">Equity Curve</h2>
-            <ResponsiveContainer width="100%" height={300}>
+          <div className="bg-white p-8 rounded-2xl shadow-xl border-2 border-gray-100 hover:border-blue-200 transition-all">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="text-3xl">📈</div>
+              <div>
+                <h2 className="text-2xl font-bold text-gray-800">Equity Curve</h2>
+                <p className="text-sm text-gray-600">Cumulative account growth over time</p>
+              </div>
+            </div>
+            <ResponsiveContainer width="100%" height={350}>
               <LineChart data={equityCurve}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="month" style={{ fontFamily: 'JetBrains Mono, monospace' }} />
@@ -110,9 +130,15 @@ const TradingBacktestAnalysis = () => {
           </div>
 
           {/* Monthly P&L */}
-          <div className="bg-white p-6 rounded-lg shadow">
-            <h2 className="text-xl font-semibold mb-4 text-gray-700">Monthly P&L</h2>
-            <ResponsiveContainer width="100%" height={300}>
+          <div className="bg-white p-8 rounded-2xl shadow-xl border-2 border-gray-100 hover:border-green-200 transition-all">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="text-3xl">💰</div>
+              <div>
+                <h2 className="text-2xl font-bold text-gray-800">Monthly P&L</h2>
+                <p className="text-sm text-gray-600">Profit and loss breakdown by month</p>
+              </div>
+            </div>
+            <ResponsiveContainer width="100%" height={350}>
               <BarChart data={monthlyData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="month" style={{ fontFamily: 'JetBrains Mono, monospace' }} />
@@ -134,9 +160,15 @@ const TradingBacktestAnalysis = () => {
           </div>
 
           {/* Drawdown */}
-          <div className="bg-white p-6 rounded-lg shadow">
-            <h2 className="text-xl font-semibold mb-4 text-gray-700">Drawdown (%)</h2>
-            <ResponsiveContainer width="100%" height={300}>
+          <div className="bg-white p-8 rounded-2xl shadow-xl border-2 border-gray-100 hover:border-red-200 transition-all">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="text-3xl">📉</div>
+              <div>
+                <h2 className="text-2xl font-bold text-gray-800">Drawdown (%)</h2>
+                <p className="text-sm text-gray-600">Risk exposure and recovery analysis</p>
+              </div>
+            </div>
+            <ResponsiveContainer width="100%" height={350}>
               <LineChart data={equityCurve}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="month" style={{ fontFamily: 'JetBrains Mono, monospace' }} />
